@@ -17,7 +17,12 @@
 <script>
 export default {
     name: 'Main',
-    props:['movies']
+    props:['movies', 'searching'],
+    methods:{
+        searchFilter(){
+            
+        }
+    }
 }
 </script>
 

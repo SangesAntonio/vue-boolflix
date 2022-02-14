@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <Header />
-    <Main :movies='movies'/>
+    <Header @search-ready='getSearch'/>
+    <Main :movies='movies' :searching='searching'/>
   </div>
 </template>
 
@@ -19,11 +19,15 @@ export default {
   data(){
     return{
       movies:[],
-    
+      searching:'',
     }
   },
   
   methods:{
+    getSearch(search){
+      this.searching= search;
+
+    },
     
     getMovie(){
       const config ={

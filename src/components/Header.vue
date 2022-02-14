@@ -1,7 +1,7 @@
 <template>
   <div>
       <input type="search" v-model='searched' placeholder='Cerca un film o serie' >
-      <button type='button'>Inizia a cercare</button>
+      <button type='button' @click='sendResult()'>Inizia a cercare</button>
 
   </div>
 </template>
@@ -14,6 +14,13 @@ export default {
             searched:'',    
 
         }
+    },
+    methods:{
+        sendResult(){
+            this.$emit("search-ready", this.searched);
+           
+        },
+        
     }
 }
 </script>
