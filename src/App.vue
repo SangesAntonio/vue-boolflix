@@ -33,7 +33,7 @@ export default {
       const config ={
         params:{
         api_key:'7ae9d79835583bbc51eb82040165f81f',
-        query:'the',
+        query: '',
         language:'it-IT',
         },
       }
@@ -43,6 +43,11 @@ export default {
         this.movies= res.data.results;
 
       });
+    }
+  },
+  computed:{
+    getQuery(){
+      return this.query=this.search;
     }
   },
   mounted(){

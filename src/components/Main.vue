@@ -18,11 +18,7 @@
 export default {
     name: 'Main',
     props:['movies', 'searching'],
-    methods:{
-        searchFilter(){
-            
-        }
-    }
+    
 }
 </script>
 
