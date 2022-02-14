@@ -1,7 +1,7 @@
 <template>
   <div>
       <div>
-          <h1>Cerca qualcosa per iniziare</h1>
+          <h1 f-if='!movies-length'>Cerca qualcosa per iniziare</h1>
           <ul class="cards">
               <li class="card" v-for='(movie, index) in movies' :key='index'>
                 <h1>{{movie.title}}</h1>

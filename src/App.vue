@@ -20,39 +20,40 @@ export default {
     return{
       movies:[],
       searching:'',
+      query: ''
     }
   },
   
   methods:{
-    getSearch(search){
-      this.searching= search;
-
+    getQuery(){
+      this.query = this.searching
     },
-    
-    getMovie(){
+    getSearch(search,){
+      this.searching= search;
+      this.getQuery();
       const config ={
         params:{
-        api_key:'7ae9d79835583bbc51eb82040165f81f',
-        query: '',
-        language:'it-IT',
+          api_key: '7ae9d79835583bbc51eb82040165f81f',
+          query: this.query,
+          language:'it-IT',
         },
       }
+      
       axios
       .get('https://api.themoviedb.org/3/search/movie', config)
       .then((res )=>{
         this.movies= res.data.results;
 
       });
-    }
+    },
+   
+
+    
+
   },
-  computed:{
-    getQuery(){
-      return this.query=this.search;
-    }
-  },
-  mounted(){
-      this.getMovie();
-  }
+  
+ 
+  
 }
   
 </script>
