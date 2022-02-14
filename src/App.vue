@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <Header/>
-    <Main/>
+    <Header />
+    <Main :movies='movies'/>
   </div>
 </template>
 
@@ -29,7 +29,7 @@ export default {
       const config ={
         params:{
         api_key:'7ae9d79835583bbc51eb82040165f81f',
-        query:'Il',
+        query:'the',
         language:'it-IT',
         },
       }
