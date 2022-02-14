@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <Header @search-ready='getSearch'/>
-    <Main :movies='movies' :searching='searching'/>
+    <Header @search-ready='getMovie'/>
+    <Main :movies='movies' :series='series' :searching='searching'/>
   </div>
 </template>
 
@@ -19,6 +19,7 @@ export default {
   data(){
     return{
       movies:[],
+      series:[],
       searching:'',
       query: ''
     }
@@ -28,7 +29,7 @@ export default {
     getQuery(){
       this.query = this.searching
     },
-    getSearch(search,){
+    getMovie(search,){
       this.searching= search;
       this.getQuery();
       const config ={
@@ -39,23 +40,24 @@ export default {
         },
       }
       
-      axios
-      .get('https://api.themoviedb.org/3/search/movie', config)
-      .then((res )=>{
-        this.movies= res.data.results;
+      axios.all([
+        axios.get('https://api.themoviedb.org/3/search/movie', config),
+        axios.get('https://api.themoviedb.org/3/search/tv', config)
 
-      });
+      ])
+      .then(axios.spread((res1, res2) => {
+        this.movies= res1.data.results;
+        this.series= res2.data.results;
+
+      }));
+      
+
     },
-   
-
-    
-
+  
   },
   
- 
-  
 }
-  
+
 </script>
 
 <style lang="scss">
