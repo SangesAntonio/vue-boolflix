@@ -7,7 +7,10 @@
               <li class="card" v-for='(movie, index) in movies' :key='index'>
                 <h1>{{movie.title}}</h1>
                 <h2>{{movie.original_title}}</h2>
-                <p>{{movie.original_language}}</p>
+                <div>
+                    <img v-if="movie.original_language === 'en' || movie.original_language === 'it'" :src="require (`../assets/img/${movie.original_language}.png`)" :alt="movie.original_language">
+                <p v-else >{{movie.original_language}}</p>
+                </div>
                 <p>{{movie.vote_average}}</p>
               </li>
           </ul>
@@ -31,6 +34,7 @@
 export default {
     name: 'Main',
     props:['movies', 'searching', 'series'],
+    
     
 }
 </script>
