@@ -30,6 +30,11 @@ export default {
       this.query = this.searching
     },
     getMovie(search,){
+      if(!search){
+        this.movies = [];
+        this.series = [];
+        return ;
+      }
       this.searching= search;
       this.getQuery();
       const config ={

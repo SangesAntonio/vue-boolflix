@@ -1,6 +1,6 @@
 <template>
   <div>
-      <input type="search" v-model='searched' placeholder='Cerca un film o serie' >
+      <input type="search" v-model.trim='searched' placeholder='Cerca un film o serie' >
       <button type='button' @click='sendResult()'>Inizia a cercare</button>
 
   </div>

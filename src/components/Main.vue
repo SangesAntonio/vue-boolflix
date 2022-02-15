@@ -4,7 +4,7 @@
       <div>
           <h2 v-if="movies.length">Film</h2>
           <ul class="cards">
-              <li class="card" v-for='(movie, index) in movies' :key='index'>
+              <li class="card" v-for='(movie, index) in movies' :key='movie.id || index'>
                 <h1>{{movie.title}}</h1>
                 <h2>{{movie.original_title}}</h2>
                 <div>
@@ -19,10 +19,13 @@
           <h2 v-if="series.length">Serie</h2>
 
           <ul class="cards">
-              <li class="card" v-for='(serie, index) in series' :key='index'>
+              <li class="card" v-for='(serie, index) in series' :key='series.id || index'>
                 <h1>{{serie.name}}</h1>
                 <h2>{{serie.original_name}}</h2>
-                <p>{{serie.original_language}}</p>
+                <div>
+                    <img v-if="serie.original_language === 'en' || serie.original_language === 'it'" :src="require (`../assets/img/${serie.original_language}.png`)" :alt="serie.original_language">
+                <p v-else >{{serie.original_language}}</p>
+                </div>
                 <p>{{serie.vote_average}}</p>
               </li>
           </ul>
