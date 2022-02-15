@@ -10,6 +10,7 @@
             :originalTitle='movie.original_title'
             :originalLanguage='movie.original_language'
             :vote='movie.vote_average'
+            baseUrl='https://image.tmdb.org/t/p/w342'
             
             />
           </div>
@@ -24,6 +25,7 @@
             :originalTitle='serie.original_title'
             :originalLanguage='serie.original_language'
             :vote='serie.vote_average'
+            baseUrl='https://image.tmdb.org/t/p/w342'
             
             />
         </div>
@@ -50,16 +52,7 @@ export default {
         
         
     },
-    /*computed:{
-        getPoster(){
-            if(!this.movie['poster_path']){
-                return require ('../assets/img/unvalid.jpg');
-            }
-                return  (this.urlBaseImg + this.movie['poster_path']);
-            
-        },
-        
-    }*/
+    
     
 }
 </script>
