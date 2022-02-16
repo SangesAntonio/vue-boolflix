@@ -66,7 +66,14 @@ export default {
     margin: auto 0;
     padding-top: 50px;
 
-    
+    h2{
+        
+        
+        color: white;
+        
+        
+        
+    }
     
    
 }
