@@ -1,13 +1,9 @@
 <template>
   <div class="card-cs col-4">
-      <div class="m-4 border border-5">
-
-        
+      <div class="m-4 relative-card border border-5 "  @mouseover="isHovering = true" 
+      @mouseout="isHovering = false" >
         <img :src="getPoster" class="img-fluid w-100" alt="">
-
-    
-        <div class="hovers"  >
-
+        <div class="hovers" :class="{hovering: isHovering}">
             <h1>Titolo: {{title}}</h1>
             <h2>{{originalTitle}}</h2>
             <div class="">
@@ -30,10 +26,13 @@ export default {
     props: ['item','title','originalTitle','vote','originalLanguage','baseUrl'],
     data(){
         return{
+            isHovering : false
         }
     },
     methods:{
-        
+        mouseHover(){
+            return this.overing = true
+        }
     },
     computed:{
         convertVote(){
@@ -57,21 +56,31 @@ export default {
 <style scoped lang='scss'>
 .card-cs{
     padding: 10px;
-    position: relative;
     
-   
+   .relative-card{
+       width: 100%;
+       height: auto;
+       position: relative;
+
+   }
 
     .hovers{
         padding: 5px;
         background-color: rgba(0, 0, 0, 0.52);
         color: white;
         width: 100%;
-        height: 500px;
+        height: 100%;
         overflow-y: auto;
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        transition: opacity 0.5s;
         
     }
+    .hovering{
+        opacity: 1;
+    }
+    
 }
-.cards-cs:hover .hovers{
-    display: inline-block;
-}
+
 </style>
